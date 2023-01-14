@@ -21,5 +21,7 @@ tasks.getByName<Test>("test") {
 tasks.withType<Jar>() {
     manifest {
         attributes["Main-Class"] = "me.awumii.VerificationServer"
+        attributes["Premain-Class"] = "me.awumii.Agent"
+        //attributes["Agent-Class"] = "me.awumii.Agent"
     }
 }

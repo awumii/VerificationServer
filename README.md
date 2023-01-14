@@ -1,1 +1,1 @@
-:)
+This is very stupid but it works. I couldn't find a safe way to redirect a domain so a change in the system's /etc/hosts is required.

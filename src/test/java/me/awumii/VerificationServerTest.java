@@ -3,7 +3,6 @@ package me.awumii;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -12,7 +11,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.Random;
 
-public class VerificationClient {
+public class VerificationServerTest {
 
     @Test
     void testServer() throws URISyntaxException {
@@ -32,9 +31,7 @@ public class VerificationClient {
 
         // Send the request, then check if the response contains the original code and true at the end.
         client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenAccept(response -> {
-                    Assertions.assertEquals(response.body(), code + "true");
-                })
+                .thenAccept(response -> Assertions.assertEquals(response.body(), code + "verified", "Unexpected response: " + response.body()))
                 .join();
     }
 }
