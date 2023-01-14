@@ -20,7 +20,7 @@ public class VerificationHandler implements HttpHandler {
         var code = request.split("\\?code=")[1].split("&")[0];
 
         // Send the response.
-        var response = code + "true";
+        var response = code + "verified";
         exchange.sendResponseHeaders(200, response.getBytes().length);
 
         var out = exchange.getResponseBody();
