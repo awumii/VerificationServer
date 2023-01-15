@@ -1,1 +1,3 @@
-This is very stupid but it works. I couldn't find a safe way to redirect a domain so a change in the system's /etc/hosts is required.
+Very stupid alternative authentication server for some DRMs. Requires to forward domain to localhost in /etc/hosts.  
+For game authentication run  
+`iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 8080`

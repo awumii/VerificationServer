@@ -1,5 +1,7 @@
 package me.awumii;
 
+import me.awumii.VerificationServer;
+
 import java.lang.instrument.Instrumentation;
 
 // In PrismLauncher, edit instance, switch to Version tab, on the right panel select Add Agent.

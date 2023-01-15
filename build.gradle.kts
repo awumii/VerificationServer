@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.awumii"
-version = "1.0-SNAPSHOT"
+version = "2.0"
 
 repositories {
     mavenCentral()
@@ -22,6 +22,5 @@ tasks.withType<Jar>() {
     manifest {
         attributes["Main-Class"] = "me.awumii.VerificationServer"
         attributes["Premain-Class"] = "me.awumii.Agent"
-        //attributes["Agent-Class"] = "me.awumii.Agent"
     }
 }
