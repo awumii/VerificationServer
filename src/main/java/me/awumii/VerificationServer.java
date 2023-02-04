@@ -14,7 +14,7 @@ public class VerificationServer {
 
     public static void main(String[] args) {
         try {
-            var server = HttpServer.create(new InetSocketAddress("localhost", 8080), 0);
+            var server = HttpServer.create(new InetSocketAddress("localhost", 80), 0);
 
             // Handler for a certain mod.
             server.createContext("/verify", new PModHandler());
@@ -25,9 +25,9 @@ public class VerificationServer {
             server.setExecutor(Executors.newCachedThreadPool());
             server.start();
 
-            LOGGER.info("Server started on port 8080");
+            LOGGER.info("Server started on port 80");
         } catch (IOException exception) {
-            LOGGER.severe("Could not start the verification server. Check if there is anything running on port 8080.");
+            LOGGER.severe("Could not start the verification server. Check if there is anything running on port 80.");
         }
     }
 }
