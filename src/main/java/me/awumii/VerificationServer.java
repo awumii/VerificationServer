@@ -1,8 +1,6 @@
 package me.awumii;
 
 import com.sun.net.httpserver.HttpServer;
-import me.awumii.handler.IslandHandler;
-import me.awumii.handler.PModHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -16,12 +14,7 @@ public class VerificationServer {
         try {
             var server = HttpServer.create(new InetSocketAddress("localhost", 80), 0);
 
-            // Handler for a certain mod.
-            server.createContext("/verify", new PModHandler());
-
-            // Handler for a very old island themed game with dead DRM servers.
-            server.createContext("/ws", new IslandHandler());
-
+            server.createContext("/verify", new VerifyHandler());
             server.setExecutor(Executors.newCachedThreadPool());
             server.start();
 
