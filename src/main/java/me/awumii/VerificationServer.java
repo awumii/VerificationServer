@@ -1,6 +1,8 @@
 package me.awumii;
 
 import com.sun.net.httpserver.HttpServer;
+import me.awumii.handler.IslandHandler;
+import me.awumii.handler.PModHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -12,16 +14,20 @@ public class VerificationServer {
 
     public static void main(String[] args) {
         try {
-            var server = HttpServer.create(new InetSocketAddress("localhost", 80), 0);
-            server.createContext("/verify", new VerifyHandler());
+            var server = HttpServer.create(new InetSocketAddress("localhost", 8080), 0);
+
+            // Handler for a certain mod.
+            server.createContext("/verify", new PModHandler());
+
+            // Handler for a very old island themed game with dead DRM servers.
+            server.createContext("/ws", new IslandHandler());
+
             server.setExecutor(Executors.newCachedThreadPool());
             server.start();
 
-            LOGGER.info("Server started on port 80");
+            LOGGER.info("Server started on port 8080");
         } catch (IOException exception) {
-            LOGGER.severe("Could not start the verification server. Check if there is anything running on port 80, and run the program as root.");
-            exception.printStackTrace();
-            System.exit(-1);
+            LOGGER.severe("Could not start the verification server. Check if there is anything running on port 8080.");
         }
     }
 }
