@@ -3,7 +3,6 @@ package me.awumii;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -15,7 +14,7 @@ import java.util.Random;
 public class VerificationServerTest {
 
     @Test
-    void testVerificationServer() throws URISyntaxException, IOException {
+    void testVerificationServer() throws URISyntaxException {
         // Start the server
         VerificationServer.main(null);
 
